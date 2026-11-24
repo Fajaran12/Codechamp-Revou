@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb">
+  <meta name="description" content="A calm, private workspace for tracking spending, goals, assets and debt.">
+  <title>Moneta — Personal finance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-view-link="dashboard" aria-label="Moneta home">
+        <span class="brand-mark">m</span><span>moneta<span class="brand-period">.</span></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-view="dashboard"><span class="nav-icon">◫</span>Overview</button>
+        <button class="nav-link" data-view="transactions"><span class="nav-icon">⇄</span>Transactions</button>
+        <button class="nav-link" data-view="wallets"><span class="nav-icon">▣</span>Wallets</button>
+        <button class="nav-link" data-view="assets"><span class="nav-icon">◈</span>Assets</button>
+        <button class="nav-link" data-view="budgets"><span class="nav-icon">◎</span>Budgets</button>
+        <button class="nav-link" data-view="goals"><span class="nav-icon">↗</span>Goals</button>
+        <button class="nav-link" data-view="debts"><span class="nav-icon">↔</span>Debt tracking</button>
+        <button class="nav-link" data-view="reports"><span class="nav-icon">▤</span>Reports</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-note"><span class="privacy-dot"></span><div><strong>Your money, your device</strong><small>Data stays in this browser</small></div></div>
+        <button class="nav-link" data-view="settings"><span class="nav-icon">⚙</span>Settings & backup</button>
+        <div class="profile"><div class="avatar">M</div><div><strong>My finances</strong><small>Personal workspace</small></div><span class="profile-more">···</span></div>
+      </div>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <button class="mobile-menu icon-button" id="menuToggle" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="pageTitle">Overview</strong></div>
+        <div class="topbar-actions">
+          <span class="today-label" id="todayLabel"></span>
+          <label class="sr-only" for="languageSelect">Language</label>
+          <select class="language-select" id="languageSelect" aria-label="Language">
+            <option value="en">English</option>
+            <option value="id">Bahasa Indonesia</option>
+          </select>
+          <button class="icon-button theme-toggle" id="themeToggle" aria-label="Switch color theme" title="Switch color theme">☾</button>
+          <button class="button button-primary button-small" data-action="add-transaction"><span>＋</span> Add transaction</button>
+        </div>
+      </header>
+      <main class="content" id="appContent" tabindex="-1"></main>
+      <footer class="footer">MONETA <span>·</span> Your financial life, a little clearer.</footer>
+    </div>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+  <input class="hidden-input" id="restoreFile" type="file" accept=".json,application/json" aria-label="Choose a Moneta backup">
+  <dialog class="modal" id="formDialog" aria-labelledby="dialogTitle">
+    <div id="dialogContent"></div>
+  </dialog>
+</body>
+</html>
